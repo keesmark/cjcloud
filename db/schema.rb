@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812171048) do
+ActiveRecord::Schema.define(version: 20170813174453) do
+
+  create_table "c_boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "　area_id"
+    t.integer  "category_id"
+    t.string   "titile"
+    t.string   "img_url"
+    t.text     "content",     limit: 65535
+    t.integer  "tel"
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["user_id"], name: "index_c_boards_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -20,4 +33,5 @@ ActiveRecord::Schema.define(version: 20170812171048) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "c_boards", "users"
 end
