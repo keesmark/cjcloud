@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170813174453) do
+ActiveRecord::Schema.define(version: 20170815060905) do
 
   create_table "c_boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "　area_id"
     t.integer  "category_id"
-    t.string   "titile"
+    t.string   "title"
     t.string   "img_url"
     t.text     "content",     limit: 65535
     t.integer  "tel"

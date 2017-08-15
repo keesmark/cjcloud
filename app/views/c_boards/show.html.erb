@@ -1,0 +1,8 @@
+<h1>メッセージ詳細ページ</h1>
+
+<p><%= @c_board.title %></p>
+<p><%= @c_board.content %></p>
+
+<%= link_to '一覧に戻る', c_boards_path %>
+<%= link_to 'このメッセージを編集する', edit_c_board_path(@c_board) %>
+<%= link_to 'このメッセージを削除する', @c_board, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
