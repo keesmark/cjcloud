@@ -1,5 +1,33 @@
-.logo img {
-  height : 50px;
-  width : 150px;
-  background-color: white;
+.logo img{
+  height: 80px;
+  width: 90px;
+  margin:15px 0 15px;
 }
+
+i{
+font-size: 1.3em;
+color: inherit;
+}
+ 
+.navbar .navbar-inner {
+padding: 0;
+}
+ 
+.navbar .nav {
+margin: 0;
+display: table;
+width: 100%;
+}
+ 
+.navbar .nav li {
+display: table-cell;
+float: none;
+}
+ 
+.nav-icon {
+font-weight: bold;
+text-align: center;
+border-left: 1px solid rgba(255, 255, 255, .75);
+border-right: 1px solid rgba(0, 0, 0, .1);
+}
+ 

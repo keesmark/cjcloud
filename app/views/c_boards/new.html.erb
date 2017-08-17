@@ -1,25 +1,3 @@
-<h1>スレッド新規作成ページ</h1>
 
-<% if @c_board.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@c_board.errors.count, "error") %> prohibited this message from being saved:</h2>
 
-      <ul>
-        <% @c_board.errors.full_messages.each do |c_board| %>
-          <li><%= c_board %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-<%= form_for(@c_board) do |f| %>
-  <%= f.label :title, 'タイトル' %>
-  <%= f.text_field :title %>
-  
-  <%= f.label :content, '詳細' %>
-  <%= f.text_field :content %>
-
-  <%= f.submit '投稿' %>
-<% end %>
-
-<%= link_to '一覧に戻る', c_boards_path %>
+<%= render 'form', c_board: @c_board %>

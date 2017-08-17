@@ -1,6 +1,9 @@
 <h1>メッセージ詳細ページ</h1>
 
 <p><%= @c_board.title %></p>
+<p><%= @c_board.area.name %></p>
+<p><%= @c_board.category.name %></p>
+<p><%= @c_board.tel %></p>
 <p><%= @c_board.content %></p>
 
 <%= link_to '一覧に戻る', c_boards_path %>

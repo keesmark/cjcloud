@@ -10,19 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815060905) do
+ActiveRecord::Schema.define(version: 20170816174241) do
+
+  create_table "areas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "c_boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "　area_id"
+    t.integer  "user_id"
+    t.integer  "area_id"
     t.integer  "category_id"
     t.string   "title"
-    t.string   "img_url"
     t.text     "content",     limit: 65535
-    t.integer  "tel"
-    t.integer  "user_id"
+    t.string   "img_url"
+    t.string   "tel"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.index ["area_id"], name: "index_c_boards_on_area_id", using: :btree
+    t.index ["category_id"], name: "index_c_boards_on_category_id", using: :btree
     t.index ["user_id"], name: "index_c_boards_on_user_id", using: :btree
+  end
+
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -33,5 +47,7 @@ ActiveRecord::Schema.define(version: 20170815060905) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "c_boards", "areas"
+  add_foreign_key "c_boards", "categories"
   add_foreign_key "c_boards", "users"
 end
