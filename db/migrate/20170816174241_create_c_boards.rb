@@ -6,7 +6,10 @@ class CreateCBoards < ActiveRecord::Migration[5.0]
       t.references :category, foreign_key: true
       t.string :title
       t.text :content
-      t.string :img_url
+      t.string :image
+      t.string :s_image
+      t.string :t_image
+      t.string :f_image
       t.string :tel
 
       t.timestamps

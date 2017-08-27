@@ -1,10 +1,37 @@
-<h1>メッセージ詳細ページ</h1>
+<h2>クラシファイド</h2>
 
-<p><%= @c_board.title %></p>
-<p><%= @c_board.area.name %></p>
-<p><%= @c_board.category.name %></p>
-<p><%= @c_board.tel %></p>
-<p><%= @c_board.content %></p>
+<div class="jumbotron">
+  <div class="text-center title">
+    <%= @c_board.title %>
+  </div>
+  
+  <div class="inline text-center">
+    <%= @c_board.area.name %>
+    <%= @c_board.category.name %>
+  </div>
+  
+  <div class="text-center">
+    <ul>
+      <li>投稿者名：</li>
+      <li>連絡先：メールはこちら　TEL：<%= @c_board.tel %></li>
+      <li>更新日：<%= @c_board.updated_at %></li>
+    </ul>
+  </div>
+  
+  <div class="text-center">
+    <h3>詳細</h3>
+    <p><%= @c_board.content %></p>
+  </div>
+  
+  <div class="text-center">
+    <h3>写真</h3>
+    <p><%= image_tag @c_board.image.url.to_s %></p>
+    <p><%= image_tag @c_board.s_image.url.to_s %></p>
+    <p><%= image_tag @c_board.t_image.url.to_s %></p>
+    <p><%= image_tag @c_board.f_image.url.to_s %></p>
+  </div>
+  
+
 
 <%= link_to '一覧に戻る', c_boards_path %>
 <%= link_to 'このメッセージを編集する', edit_c_board_path(@c_board) %>

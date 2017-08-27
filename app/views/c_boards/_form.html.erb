@@ -36,5 +36,30 @@
   <%= f.text_field :content, class: 'form-control' %>
 </div>
 
+<div class="form-group">
+  <%= f.label :image, '写真1' %>
+  <%= f.file_field :image %>
+  <%= f.hidden_field :image_cache %>
+</div>
+
+<div class="form-group">
+  <%= f.label :s_image, '写真2' %>
+  <%= f.file_field :s_image %>
+  <%= f.hidden_field :s_image_cache %>
+</div>
+
+<div class="form-group">
+  <%= f.label :t_image, '写真3' %>
+  <%= f.file_field :t_image %>
+  <%= f.hidden_field :t_image_cache %>
+</div>
+
+<div class="form-group">
+  <%= f.label :f_image, '写真4' %>
+  <%= f.file_field :f_image %>
+  <%= f.hidden_field :f_image_cache %>
+</div>
+
+
   <%= f.submit '投稿', class: 'btn btn-primary' %>　<%= link_to '一覧に戻る', c_boards_path, class: 'btn btn-default' %>
 <% end %>

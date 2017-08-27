@@ -1,6 +1,7 @@
 class CBoardsController < ApplicationController
   before_action :set_c_board, only: [:show, :edit, :update, :destroy]
   before_action :require_user_logged_in, only: [:create, :edit, :destroy]
+  before_action :correct_user, only: [:destroy, :edit]
   def index
     @c_boards = CBoard.all
   end
@@ -51,10 +52,36 @@ class CBoardsController < ApplicationController
     @c_board = CBoard.find(params[:id])
   end
   
+  def correct_user
+    @c_board = current_user.c_boards.find_by(id: params[:id])
+    unless @c_board
+      redirect_to root_url
+    end
+  end
+  
 
   # Strong Parameter
   def c_board_params
-    params.require(:c_board).permit(:title, :content, :category_id, :area_id, :tel, :image_url, :user)
+    params.require(:c_board).permit(
+      :title,
+      :content,
+      :category_id,
+      :area_id,
+      :tel,
+      :user,
+      :image,
+      :image_cache,
+      :remove_image,
+      :s_image,
+      :s_image_cache,
+      :s_remove_image,
+      :t_image,
+      :t_image_cache,
+      :t_remove_image,
+      :f_image,
+      :f_image_cache,
+      :f_remove_image
+      )
   end
   
 end

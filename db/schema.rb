@@ -24,7 +24,10 @@ ActiveRecord::Schema.define(version: 20170816174241) do
     t.integer  "category_id"
     t.string   "title"
     t.text     "content",     limit: 65535
-    t.string   "img_url"
+    t.string   "image"
+    t.string   "s_image"
+    t.string   "t_image"
+    t.string   "f_image"
     t.string   "tel"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
