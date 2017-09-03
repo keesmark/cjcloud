@@ -1,8 +1,7 @@
-<h1>メッセージ一覧</h1>
-
+<h2>メッセージ一覧</h2>
+<%= link_to '新規メッセージの投稿', new_c_board_path, class: "btn btn-primary btn-block" %>
 <ul>
   <% @c_boards.each do |c_board| %>
     <li><%= link_to c_board.id, c_board %> : <%= c_board.content %></li>
   <% end %>
 </ul>
-<%= link_to '新規メッセージの投稿', new_c_board_path %>
