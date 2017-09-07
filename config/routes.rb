@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
-  resources :users, only: [:index, :show, :new, :create, :edit, :destroy, :update]
+  resources :users
   
   resources :c_boards do
       get 'inquiry', to: 'inquiry#c_board_index'
@@ -17,7 +17,4 @@ Rails.application.routes.draw do
   get 'inquiry', to: 'inquiry#index'
   post 'inquiry/confirm', to: 'inquiry#confirm'
   post 'inquiry/thanks', to: 'inquiry#thanks'
-  resources :areas, only: [:show] do
-    resources :categories, only: [:show]
-  end
 end

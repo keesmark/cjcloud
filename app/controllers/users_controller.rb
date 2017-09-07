@@ -27,16 +27,39 @@ class UsersController < ApplicationController
   def destroy
   end
 
-  def update
-  end
-
   def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+      if !@user.authenticate(params[:user][:current_password])
+        flash.now[:danger] = '現在のパスワードが一致しません'
+        render :edit
+      elsif @user.update_attributes(user_params)
+        flash[:success] = 'ユーザー情報を変更しました。'
+        redirect_to @user
+        # 更新に成功したときの処理
+      else
+        flash.now[:danger] = '更新に失敗しました。'
+        render :edit
+      end
   end
   
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+  
+  def password_current(email, password)
+    @user = User.find_by(email: email)
+    if @user && @user.authenticate(password)
+      session[:user_id] = @user.id
+      return true
+    else
+      return false
+    end
   end
   
 end
