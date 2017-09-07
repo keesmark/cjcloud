@@ -3,7 +3,8 @@ class CBoardsController < ApplicationController
   before_action :require_user_logged_in, only: [:create, :edit, :destroy]
   before_action :correct_user, only: [:destroy, :edit]
   def index
-    @c_boards = CBoard.all
+    @c_boards = CBoard.order(updated_at: :desc)
+    
   end
 
   def show
@@ -74,13 +75,13 @@ class CBoardsController < ApplicationController
       :remove_image,
       :s_image,
       :s_image_cache,
-      :s_remove_image,
+      :remove_s_image,
       :t_image,
       :t_image_cache,
-      :t_remove_image,
+      :remove_t_image,
       :f_image,
       :f_image_cache,
-      :f_remove_image
+      :remove_f_image
       )
   end
   

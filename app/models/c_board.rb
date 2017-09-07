@@ -18,5 +18,17 @@ class CBoard < ApplicationRecord
   validates :f_image_url, length: { maximum: 255 }
   validates :content, presence: true, length: { maximum: 1000 }
   validates :tel, length: { maximum: 20 }
-  
+
+  validate :image_presence
+
+  def image_presence
+    if s_image.present? && image.blank?
+      errors.add(:s_image, "requires input of :image")
+      elsif t_image.present? && image.blank?
+        errors.add(:t_image, "requires input of :image")
+      elsif f_image.present? && image.blank?
+        errors.add(:f_image, "requires input of :image")
+    end
+  end
+      
 end

@@ -9,6 +9,6 @@ class InquiryMailer < ActionMailer::Base
   def inquiry_email(inquiry, user)
     @inquiry = inquiry
     @user = user
-    mail(to: user.email, subject: 'お問い合わせを承りました')
+    mail(to: user.email, subject: 'あなたの書き込みについてメーセージが届きました')
   end
 end

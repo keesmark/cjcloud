@@ -3,7 +3,7 @@
 li {
   list-style: none;
 }
-
+/* header ----------------- */
 .logo img{
   height: auto;
   width: 200px;
@@ -50,6 +50,27 @@ border-radius: 0 3px 3px 0;
   display : block; 
 }
 
+/* index c_board ----------------*/
+
+.main-panel {
+  margin : 20px auto;
+}
+
+.li-title, .li-area, .li-category {
+  margin-left : 15px;
+}
+
+.li-title {
+  font-size : 16px;
+}
+
+.li-details {
+  margin-left : 10px;
+  text-align : center;
+}
+
+/* show.view -----------------*/
+
 .title {
   font-size : 20px;
 }
@@ -78,3 +99,74 @@ border-radius: 0 3px 3px 0;
   font-size : 20px;
 }
 
+/* form for cboard ----------------*/
+.form-cboard {
+  border : 1px solid black;
+  border-radius : 3px;
+  background-color : white;
+  padding : 20px;
+}
+
+/* user table ---------------------*/
+table.user-info {
+    width: 500px;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0px 15px;
+    font-size: 12px;
+}
+ 
+table.user-info th,
+table.user-info td {
+    padding: 10px;
+}
+ 
+table.user-info th {
+    background: #295890;
+    vertical-align: middle;
+    text-align: left;
+    width: 100px;
+    overflow: visible;
+    position: relative;
+    color: #fff;
+    font-weight: normal;
+    font-size: 15px;
+}
+ 
+table.user-info th:after {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(136, 183, 213, 0);
+    border-left-color: #295890;
+    border-width: 10px;
+    margin-top: -10px;
+}
+/* firefox */
+@-moz-document url-prefix() {
+    table.user-info th::after {
+        float: right;
+        padding: 0;
+        left: 30px;
+        top: 10px;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: relative;
+        pointer-events: none;
+        border: 10px solid transparent;
+        border-left: #295890 10px solid;
+        margin-top: -10px;
+    }
+}
+ 
+table.user-info td {
+    background: #f8f8f8;
+    width: 360px;
+    padding-left: 20px;
+}
