@@ -15,7 +15,7 @@
         <tr>
             <th>設定</th>
             <td>
-              <li><%= link_to "ユーザー情報の変更", edit_user_path(current_user), class: 'btn btn-info' %></li>
+              <li><%= link_to "ユーザー情報の変更", edit_user_path(current_user), class: 'btn btn-info' %> <%= link_to 'アカウントを削除する', @user, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-danger" %></li>
             </td>
         </tr>
     </tbody>

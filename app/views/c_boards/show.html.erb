@@ -4,26 +4,39 @@
   <div class="text-center title well">
     <%= @c_board.title %>
   </div>
+  <% if @c_board.image? %>
   <div id="CjCarousel" class="carousel slide" data-ride="carousel">
   	<ol class="carousel-indicators">
   		<li class="active" data-target="#CjCarousel" data-slide-to="0"></li>
+  		<% if @c_board.s_image? %>
   		<li data-target="#CjCarousel" data-slide-to="1"></li>
+  		<% end %>
+  		<% if @c_board.t_image? %>
   		<li data-target="#CjCarousel" data-slide-to="2"></li>
+  		<% end %>
+  		<% if @c_board.f_image? %>
   		<li data-target="#CjCarousel" data-slide-to="3"></li>
-  	</ol>
+  		<% end %>
+    </ol>
   	<div class="carousel-inner" role="listbox">
   		<div class="item active">
   			<%= image_tag @c_board.image.url.to_s %>
   		</div>
+  		<% if @c_board.s_image? %>
   		<div class="item">
   		  <%= image_tag @c_board.s_image.url.to_s %>
   		</div>
+  		<% end %>
+  		<% if @c_board.t_image? %>
   		<div class="item">
   		  <%= image_tag @c_board.t_image.url.to_s %>
   		</div>
+  		<% end %>
+  		<% if @c_board.f_image? %>
   		<div class="item">
   		  <%= image_tag @c_board.f_image.url.to_s %>
   		</div>
+  		<% end %>
   	</div>
   	<a class="left carousel-control" href="#CjCarousel" role="button" data-slide="prev">
   		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -34,7 +47,7 @@
   		<span class="sr-only">次へ</span>
   	</a>
   </div>
-  
+  <% end %>
   <div class="container text-center view-info">
     <ul>
       <li>投稿者名：<%= @c_board.user.name %></li>

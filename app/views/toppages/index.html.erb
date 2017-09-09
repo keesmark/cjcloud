@@ -5,24 +5,23 @@
       <div class="panel panel-default main-panel">
       	<div class="panel-heading">
       		<span class="li-top">
-          <span class="li-title"> 
-           <%= link_to c_board.title, c_board %>
+              <span class="li-title"> 
+                 <%= link_to c_board.title, c_board %>
+              </span>
           </span>
         </div>
-        <div class="panel-body">
-        	<%= image_tag c_board.image.thumb.url.to_s, class: "li-img" %>
-              <%= link_to '詳細', c_board, class: "btn btn-primary" %>
-            </span>
-          </span>
+        <div class="panel-body thumbnail">
+          <%= image_tag c_board.image.thumb.url.to_s, class: "li-img" %>
+          <%= link_to '詳細', c_board, class: "btn btn-primary" %>
         </div>
       </div>
     <% end %>
     
     <ul>
-      <li>バンクーバー</li>
-      <li>カルガリー</li>
-      <li>トロント</li>
-      <li>モントリオール</li>
+      <li><%= link_to "バンクーバー", area_path(id: 1) %></li>
+      <li><%= link_to "カルガリー", area_path(id: 2) %></li>
+      <li><%= link_to "トロント", area_path(id: 3) %></li>
+      <li><%= link_to "モントリオール", area_path(id: 4) %></li>
     </ul>
   </div>
 </div>

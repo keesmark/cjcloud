@@ -1,0 +1,44 @@
+<h2>カナダ/クラシファイド</h2>
+<div class="text-right">
+  <%= link_to '新規投稿', new_c_board_path, class: "btn btn-primary btn-lg" %>
+</div>
+ 
+<div>
+  <ul>
+    <li><%= link_to "レント", area_category_path(@area, id: 1) %></li>
+    <li><%= link_to "求人情報", area_category_path(@area, id: 2) %></li>
+    <li><%= link_to "コミュニティー", area_category_path(@area, id: 3) %></li>
+    <li><%= link_to "習い事", area_category_path(@area, id: 4) %></li>
+    <li><%= link_to "イベント", area_category_path(@area, id: 5) %></li>
+    <li><%= link_to "売ります・買います", area_category_path(@area, id: 6) %></li>
+  </ul>
+</div>
+ 
+<% @c_board.each do |c_board| %>
+　<%= link_to c_board do %>
+  <div class="panel panel-default main-panel">
+  	<div class="panel-heading">
+  		<span class="li-top">
+      <span class="li-title"> 
+       <%=  c_board.title %>
+      </span>
+      <span class="li-area label label-success">
+        <%= c_board.area.name %>
+      </span>
+      <span class="li-category label label-info">
+        <%= c_board.category.name %>
+      </span>
+    </div>
+    <div class="panel-body">
+      
+    	<%= image_tag c_board.image.thumb.url.to_s, class: "li-img" %>
+  	  <span class="li-details">
+        <%= c_board.content %>
+        <span class="right-details">
+        </span>
+      </span>
+    </div>
+  
+  </div>
+  <% end %>
+<% end %>

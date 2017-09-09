@@ -17,4 +17,8 @@ Rails.application.routes.draw do
   get 'inquiry', to: 'inquiry#index'
   post 'inquiry/confirm', to: 'inquiry#confirm'
   post 'inquiry/thanks', to: 'inquiry#thanks'
+  
+  resources :areas, only: [:show] do
+    resources :categories, only: [:show]
+  end
 end
