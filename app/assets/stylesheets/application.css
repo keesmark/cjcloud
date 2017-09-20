@@ -388,9 +388,11 @@ table.user-info td {
 /*--------- footer -----------*/
 footer {
   margin-top : 50px;
-  display : block;
   background-color : #42406E;
-  width : 100%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
 }
 
 .footer-top {
