@@ -1,4 +1,4 @@
-@charset "utf-8";
+
 
 body {
   background-image: url(/images/wall.png);
@@ -208,7 +208,6 @@ i{
   .p-content {
     padding : 0 0 0 18%;
     margin : 0;
-  }
 }
 
 
