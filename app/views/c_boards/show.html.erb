@@ -1,8 +1,24 @@
-<h2>クラシファイドの詳細</h2>
+<div class="h-title">クラシファイドの詳細</div>  
+<div class="text-right">
+  <%= link_to '一覧に戻る', c_boards_path, class: "btn btn-info" %>
+</div>
 
-<div class="jumbotron">
-  <div class="text-center title well">
-    <%= @c_board.title %>
+<div class="jumbotron back-jumbo">
+  <h2 class="text-left title well">
+  <%= @c_board.title %>
+  </h2>
+  <div class=" small labelsmall text-right"> 
+  更新日：<%= @c_board.updated_at %> <span class="label label-success"><%= @c_board.area.name %></span> <spam class="label label-info"><%= @c_board.category.name %></span>  
+  </div>
+  <div class="labelinfo text-right">
+    投稿者名：<%= @c_board.user.name %> 
+    TEL：<% if @c_board.tel? %>
+           <%= @c_board.tel %>
+         <% else %>
+           N/A
+         <% end %>
+    <%= link_to "メールはこちら", c_board_inquiry_path(@c_board), class: "btn btn-danger" %>
+  
   </div>
   <% if @c_board.image? %>
   <div id="CjCarousel" class="carousel slide" data-ride="carousel">
@@ -48,28 +64,42 @@
   	</a>
   </div>
   <% end %>
-  <div class="container text-center view-info">
-    <ul>
-      <li>投稿者名：<%= @c_board.user.name %></li>
-      <li>連絡先：<%= link_to "メールはこちら", c_board_inquiry_path(@c_board), class: "btn btn-link" %>　TEL：<%= @c_board.tel %></li>
-      <li>更新日：<%= @c_board.updated_at %></li>
-    </ul>
-  </div>
   
-  <div class="text-center container details">
+  
+  <div class="details">
     <h3>詳細</h3>
-    <p><%= @c_board.content %></p>
+    <p class="content-show"><%= @c_board.content %></p>
   </div>
   
-  
-  <%= @c_board.category.name %>  <%= @c_board.area.name %>
+  <div class="ad-post text-center">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- cj-post -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:250px"
+         data-ad-client="ca-pub-5902955087719107"
+         data-ad-slot="4514458456"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <span class="sp-none">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- cj-post -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:300px;height:250px"
+             data-ad-client="ca-pub-5902955087719107"
+             data-ad-slot="4514458456"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </span>
+  </div>
+</div>
 
-
-  
   <div class="text-center edit-del">
+   
       <%= link_to 'このメッセージを編集する', edit_c_board_path(@c_board), class: "btn btn-primary" %>
   
       <%= link_to 'このメッセージを削除する', @c_board, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-danger" %>
   </div>
+  
 </div>
-<%= link_to '一覧に戻る', c_boards_path, class: "btn btn-info btn-block" %>

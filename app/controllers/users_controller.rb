@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :edit, :destroy, :update]
+  before_action :admin_user, only: [:admin]
   
   def index
   end
@@ -49,6 +50,13 @@ class UsersController < ApplicationController
         flash.now[:danger] = '更新に失敗しました。'
         render :edit
       end
+  end
+  
+  def admin
+    @users = User.all
+  
+    @c_boards = CBoard.all
+    
   end
   
   private

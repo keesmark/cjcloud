@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
   root to: 'toppages#index'
+  get 'policy', to: 'c_boards#policy'
+  get 'terms_of_use', to: 'c_boards#terms_of_use'
   
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
-  resources :users
+  resources :users do
+    collection do
+      get :admin
+    end
+  end
   
   resources :c_boards do
       get 'inquiry', to: 'inquiry#c_board_index'
       post 'inquiry/confirm', to: 'inquiry#c_board_confirm'
       post 'inquiry/thanks', to: 'inquiry#c_board_thanks'
+      
     end
     
   get 'inquiry', to: 'inquiry#index'

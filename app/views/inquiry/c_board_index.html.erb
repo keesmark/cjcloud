@@ -1,3 +1,5 @@
+<div class="jumbotron back-jumbo">
+
 <%= form_for @inquiry, :url => c_board_inquiry_confirm_path(@c_board) do |f| %>
   <div class="page-header">
     <h2>スレッド主へのお問い合わせ</h2>
@@ -30,3 +32,4 @@
   </table>
   <%= f.submit '確認', class: 'btn btn-primary' %>
 <% end %>
+</div>

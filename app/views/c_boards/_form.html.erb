@@ -1,98 +1,106 @@
 <h2 class="form-head">
   新規投稿
 </h2>
-
-<div class="row">
-  <div class="jumbotron col-md-6 col-md-offset-3">
-    <%= form_for(c_board) do |f| %>
-
-      <% if c_board.errors.any? %>
-        <div id="error_explanation">
-          <ul>
-            <% c_board.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+<div class="container">
+  <div class="row">
+    <div class="jumbotron col-md-6 col-md-offset-3 back-jumbo">
+      <%= form_for(c_board) do |f| %>
+  
+        <% if c_board.errors.any? %>
+          <div id="error_explanation">
+            <ul>
+              <% c_board.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="container form-cboard">
+          <div class="form-group">
+            <%= f.label :title, 'タイトル' %>
+            <%= f.text_field :title, class: 'form-control', placeholder: 'title' %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :area, 'エリア' %>
+            <%= f.collection_select :area_id, Area.all, :id, :name, {:prompt => "選択"}, {class: "form-control"} %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :category, 'カテゴリー' %>
+            <%= f.collection_select :category_id, Category.all, :id, :name, {:prompt => "選択"}, {class: "form-control"} %>
+          </div>
+          
+          <div class="form-group">  
+            <%= f.label :tel, '電話番号' %>
+            <%= f.text_field :tel, class: 'form-control', placeholder: 'phone number' %>
+            <span class= "small f-d">＊電話番号を入れると全体に公開されてしまいますので、公開したくない方は入れないでください。</span>
+          </div>
+            
+          <div class="form-group">  
+            <%= f.label :content, '詳細' %>
+            <%= f.text_area :content, class: 'form-control', placeholder: 'details', rows: 10 %>
+          </div>
+          
+          <div class="form-group">
+            <% if c_board.image? %>
+              <%= f.label :image, '写真1削除' %>
+              <%= f.check_box :remove_image %>
+              <%= image_tag c_board.image.thumb.url %>
+             <% else %>
+              <%= f.label :image, '写真1' %>
+              <%= f.file_field :image, class: 'filestyle ', 'data-input': false %>
+              <%= f.hidden_field :image_cache %>
             <% end %>
-          </ul>
+          </div>
+          
+           <div class="form-group">
+             <% if c_board.s_image? %>
+              <%= f.label :s_image, '写真２削除' %>
+              <%= f.check_box :remove_s_image %>
+              <%= image_tag c_board.s_image.thumb.url %>
+             <% else %>
+              <%= f.label :s_image, '写真2' %>
+              <%= f.file_field :s_image %>
+              <%= f.hidden_field :s_image_cache %>
+            <% end %>
+            
+          </div>
+          
+          <div class="form-group">
+            <% if c_board.t_image? %>
+              <%= f.label :t_image, '写真3削除' %>
+              <%= f.check_box :remove_t_image %>
+              <%= image_tag c_board.t_image.thumb.url %>
+             <% else %>
+              <%= f.label :t_image, '写真3' %>
+              <%= f.file_field :t_image %>
+              <%= f.hidden_field :t_image_cache %>
+            <% end %>
+          </div>
+          
+          <div class="form-group">
+            <% if c_board.f_image? %>
+              <%= f.label :f_image, '写真4削除' %>
+              <%= f.check_box :remove_f_image %>
+              <%= image_tag c_board.f_image.thumb.url %>
+             <% else %>
+              <%= f.label :f_image, '写真4' %>
+              <%= f.file_field :f_image %>
+              <%= f.hidden_field :f_image_cache %>
+            <% end %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.check_box :agreement, :as => :boolean, checked:false %>
+            <%= link_to "利用規約", terms_of_use_path %>と<%= link_to "プライバシーポリシー", policy_path %>に同意する
+          </div>
         </div>
+        
+        <%= f.submit '投稿', class: 'btn btn-primary f-btn' %>　<%= link_to '一覧に戻る', c_boards_path, class: 'btn btn-default f-btn' %>
       <% end %>
-      <div class="container form-cboard">
-        <div class="form-group">
-          <%= f.label :title, 'タイトル' %>
-          <%= f.text_field :title, class: 'form-control', placeholder: 'title' %>
-        </div>
-        
-        <div class="form-group">
-          <%= f.label :area, 'エリア' %>
-          <%= f.collection_select :area_id, Area.all, :id, :name, class: 'form-control', :include_blank => true %>
-        </div>
-        
-        <div class="form-group">
-          <%= f.label :category, 'カテゴリー' %>
-          <%= f.collection_select :category_id, Category.all, :id, :name, class: 'form-control', :include_blank => true %>
-        </div>
-        
-        <div class="form-group">  
-          <%= f.label :tel, '電話番号' %>
-          <%= f.text_field :tel, class: 'form-control', placeholder: 'phone number' %>
-        </div>
-          
-        <div class="form-group">  
-          <%= f.label :content, '詳細' %>
-          <%= f.text_area :content, class: 'form-control', placeholder: 'details', rows: 5 %>
-        </div>
-        
-        <div class="form-group">
-          <% if c_board.image? %>
-            <%= f.label :image, '写真1削除' %>
-            <%= f.check_box :remove_image %>
-            <%= image_tag c_board.image.thumb.url %>
-           <% else %>
-            <%= f.label :image, '写真1' %>
-            <%= f.file_field :image %>
-            <%= f.hidden_field :image_cache %>
-          <% end %>
-        </div>
-        
-         <div class="form-group">
-           <% if c_board.s_image? %>
-            <%= f.label :s_image, '写真２削除' %>
-            <%= f.check_box :remove_s_image %>
-            <%= image_tag c_board.s_image.thumb.url %>
-           <% else %>
-            <%= f.label :s_image, '写真2' %>
-            <%= f.file_field :s_image %>
-            <%= f.hidden_field :s_image_cache %>
-          <% end %>
-          
-        </div>
-        
-        <div class="form-group">
-          <% if c_board.t_image? %>
-            <%= f.label :t_image, '写真3削除' %>
-            <%= f.check_box :remove_t_image %>
-            <%= image_tag c_board.t_image.thumb.url %>
-           <% else %>
-            <%= f.label :t_image, '写真3' %>
-            <%= f.file_field :t_image %>
-            <%= f.hidden_field :t_image_cache %>
-          <% end %>
-        </div>
-        
-        <div class="form-group">
-          <% if c_board.f_image? %>
-            <%= f.label :f_image, '写真4削除' %>
-            <%= f.check_box :remove_f_image %>
-            <%= image_tag c_board.f_image.thumb.url %>
-           <% else %>
-            <%= f.label :f_image, '写真4' %>
-            <%= f.file_field :f_image %>
-            <%= f.hidden_field :f_image_cache %>
-          <% end %>
-        </div>
-      </div>
-      
-      <%= f.submit '投稿', class: 'btn btn-primary' %>　<%= link_to '一覧に戻る', c_boards_path, class: 'btn btn-default' %>
-    <% end %>
+    </div>
   </div>
 </div>
+
 

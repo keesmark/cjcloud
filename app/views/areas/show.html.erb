@@ -1,44 +1,66 @@
 <h2>カナダ/クラシファイド</h2>
-<div class="text-right">
-  <%= link_to '新規投稿', new_c_board_path, class: "btn btn-primary btn-lg" %>
-</div>
+
+
  
-<div>
-  <ul>
-    <li><%= link_to "レント", area_category_path(@area, id: 1) %></li>
-    <li><%= link_to "求人情報", area_category_path(@area, id: 2) %></li>
-    <li><%= link_to "コミュニティー", area_category_path(@area, id: 3) %></li>
-    <li><%= link_to "習い事", area_category_path(@area, id: 4) %></li>
-    <li><%= link_to "イベント", area_category_path(@area, id: 5) %></li>
-    <li><%= link_to "売ります・買います", area_category_path(@area, id: 6) %></li>
-  </ul>
-</div>
- 
-<% @c_board.each do |c_board| %>
-　<%= link_to c_board do %>
-  <div class="panel panel-default main-panel">
-  	<div class="panel-heading">
-  		<span class="li-top">
-      <span class="li-title"> 
-       <%=  c_board.title %>
-      </span>
-      <span class="li-area label label-success">
-        <%= c_board.area.name %>
-      </span>
-      <span class="li-category label label-info">
-        <%= c_board.category.name %>
-      </span>
-    </div>
-    <div class="panel-body">
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-12">
+      <section class="text-left">
+        <%= link_to '新規投稿', new_c_board_path, class: "btn btn-success btn-lg new-post" %>
+      </section>
       
-    	<%= image_tag c_board.image.thumb.url.to_s, class: "li-img" %>
-  	  <span class="li-details">
-        <%= c_board.content %>
-        <span class="right-details">
-        </span>
+      <div class="dropdown btn-area">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          エリア
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><%= link_to "バンクーバー", area_path(id: 1) %></li>
+          <li><%= link_to "カルガリー", area_path(id: 2) %></li>
+          <li><%= link_to "トロント", area_path(id: 3) %></li>
+          <li><%= link_to "モントリオール", area_path(id: 4) %></li>
+        </ul>
+      </div>
+      <div class="dropdown btn-category">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          カテゴリー
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><%= link_to "レント", area_category_path(@area, id: 1) %></li>
+          <li><%= link_to "求人情報", area_category_path(@area, id: 2) %></li>
+          <li><%= link_to "コミュニティー", area_category_path(@area, id: 3) %></li>
+          <li><%= link_to "習い事", area_category_path(@area, id: 4) %></li>
+          <li><%= link_to "イベント", area_category_path(@area, id: 5) %></li>
+          <li><%= link_to "売ります・買います", area_category_path(@area, id: 6) %></li>
+        </ul>
+      </div>
+      <span class="link-none">
+      <% @c_boards.each do |c_board| %>
+        <%= link_to c_board do %>
+          <div class="p-list">
+            <figure>
+              <%= image_tag c_board.image._100x100.url.to_s, class: "thumbnail li-img" %>
+            </figure>
+            <section class="p-content">
+              <div class="top-list">
+                <div class="li-area label label-success sp-only"><%= c_board.area.name.truncate(10, separator:':') %></div><div class="li-area label label-success sp-none"><%= c_board.area.name %></div>
+                <div class="li-category label label-info sp-only"><%= c_board.category.name.truncate(10, separator:':') %></div><div class="li-category label label-info sp-none"><%= c_board.category.name %></div>
+                <div class="li-updated label label-default"><%= c_board.updated_at %></div>
+                <div class="sp-only"><%= c_board.title.truncate(25, omission: '...') %></div>
+              </div>
+              <h2 class="li-title"><span class="sp-none"><%= c_board.title.truncate(25, omission: '...') %></span></h2>
+              <p class="li-details"><span class="sp-none"><%= c_board.content.truncate(200, omission: '...') %></span><span class="sp-only"><%= c_board.content.truncate(100, omission: '...') %></p>
+            </section>
+          </div>
+        <% end %>
+      <% end %>
       </span>
     </div>
-  
   </div>
-  <% end %>
-<% end %>
+</div>
+<div class="text-center">
+  <%= paginate @c_boards %>
+</div>
+

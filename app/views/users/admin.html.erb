@@ -1,0 +1,12 @@
+<h2>User</h2>
+<ul>
+  <% @users.each do |user| %>
+  <li><%=  user.id %>:<%= user.email %><%= link_to '削除', user, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-danger" %></li>
+  <% end %>
+</ul>
+<h2>board</h2>
+<ul>
+  <% @c_boards.each do |c_board| %>
+  <li><%=  c_board.id %>:<%= c_board.title %><%= link_to '削除', c_board, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-danger" %></li>
+  <% end %>
+</ul>

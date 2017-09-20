@@ -11,4 +11,11 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+  
+  def admin_user
+    if logged_in?
+     redirect_to root_url unless current_user.admin_flag?
+    end
+  end
+  
 end

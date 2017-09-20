@@ -11,14 +11,16 @@ class CBoard < ApplicationRecord
   validates :user_id, presence: true
   validates :area_id, presence: true
   validates :category_id, presence: true
-  validates :title, presence: true, length: { maximum: 255 }
+  validates :title, presence: true, length: { maximum: 100 }
   validates :image_url, length: { maximum: 255 }
   validates :s_image_url, length: { maximum: 255 }
   validates :t_image_url, length: { maximum: 255 }
   validates :f_image_url, length: { maximum: 255 }
   validates :content, presence: true, length: { maximum: 1000 }
   validates :tel, length: { maximum: 20 }
-
+  
+  validates_acceptance_of :agreement, allow_nil: false, on: :create
+  
   validate :image_presence
 
   def image_presence

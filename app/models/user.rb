@@ -6,5 +6,5 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   
-  has_many :c_boards
+  has_many :c_boards, dependent: :destroy
 end

@@ -1,27 +1,42 @@
-<div class="center jumbotron">
-  <div class="text-center">
-    <h2>New クラシファイド</h2>
-    <% @c_boards.each do |c_board| %>
-      <div class="panel panel-default main-panel">
-      	<div class="panel-heading">
-      		<span class="li-top">
-              <span class="li-title"> 
-                 <%= link_to c_board.title, c_board %>
-              </span>
-          </span>
-        </div>
-        <div class="panel-body thumbnail">
-          <%= image_tag c_board.image.thumb.url.to_s, class: "li-img" %>
-          <%= link_to '詳細', c_board, class: "btn btn-primary" %>
-        </div>
-      </div>
-    <% end %>
+<div class="container">
+  <div class="row">
     
-    <ul>
-      <li><%= link_to "バンクーバー", area_path(id: 1) %></li>
-      <li><%= link_to "カルガリー", area_path(id: 2) %></li>
-      <li><%= link_to "トロント", area_path(id: 3) %></li>
-      <li><%= link_to "モントリオール", area_path(id: 4) %></li>
-    </ul>
+    <div class="col-md-12 board">
+      <h2 class="top-heading">新着投稿</h2>
+      
+      <div class="dropdown btn-area">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          エリア
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><%= link_to "バンクーバー", area_path(id: 1) %></li>
+          <li><%= link_to "カルガリー", area_path(id: 2) %></li>
+          <li><%= link_to "トロント", area_path(id: 3) %></li>
+          <li><%= link_to "モントリオール", area_path(id: 4) %></li>
+        </ul>
+      </div>
+      <span class="link-none">
+      <% @c_boards.each do |c_board| %>
+        <%= link_to c_board do %>
+          <div class="p-list">
+            <figure>
+              <%= image_tag c_board.image._100x100.url.to_s, class: "thumbnail li-img" %>
+            </figure>
+            <section class="p-content">
+              <div class="top-list">
+                <div class="li-area label label-success sp-only"><%= c_board.area.name.truncate(10, separator:':') %></div><div class="li-area label label-success sp-none"><%= c_board.area.name %></div>
+                <div class="li-category label label-info sp-only"><%= c_board.category.name.truncate(10, separator:':') %></div><div class="li-category label label-info sp-none"><%= c_board.category.name %></div>
+                <div class="li-updated label label-default"><%= c_board.updated_at %></div>
+                <div class="sp-only"><%= c_board.title.truncate(25, omission: '...') %></div>
+              </div>
+              <h2 class="li-title"><span class="sp-none"><%= c_board.title.truncate(25, omission: '...') %></span></h2>
+              <p class="li-details"><span class="sp-none"><%= c_board.content.truncate(200, omission: '...') %></span><span class="sp-only"><%= c_board.content.truncate(100, omission: '...') %></p>
+            </section>
+          </div>
+        <% end %>
+      <% end %>
+      </span>
+    </div>
   </div>
 </div>
