@@ -83,4 +83,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { :host => 'cjcloud.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => ENV['SERVER_ADDRESS'],
+    :port => ENV['SERVER_PORT'],
+    :domain => ENV['SERVER_DOMAIN'],
+    :user_name => ENV['SERVER_USER_NAME'],
+    :password => ENV['SERVER_PASSWORD'],
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end
