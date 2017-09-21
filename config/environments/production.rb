@@ -94,6 +94,7 @@ Rails.application.configure do
     :user_name => ENV['SERVER_USER_NAME'],
     :password => ENV['SERVER_PASSWORD'],
     :authentication => :plain,
-    :enable_starttls_auto => true
+    :enable_starttls_auto => true,
+    :tls => true
   }
 end
