@@ -3,7 +3,7 @@ class CBoardsController < ApplicationController
   before_action :require_user_logged_in, only: [:create, :edit, :destroy]
   before_action :correct_user, only: [:destroy, :edit]
   def index
-    @c_boards = CBoard.order(updated_at: :desc).page(params[:page])
+    @c_boards = CBoard.order(updated_at: :desc).page(params[:page]).per(10)
     @new_c_boards = CBoard.order(created_at: :desc).limit(6)
   end
 

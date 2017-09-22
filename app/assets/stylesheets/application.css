@@ -17,6 +17,10 @@ li {
   text-decoration : none;
 }
 
+.breadcrumb {
+  background : none;
+}
+
 /* header ----------------- */
 header {
   background-color : #0C06BA;
@@ -288,6 +292,9 @@ i{
 .ad-post {
   margin : 20px auto;
 }
+.edit-del {
+  margin : 20px auto;
+}
 
 @media (max-width: 550px){
   .title {
@@ -328,7 +335,7 @@ i{
 
 /* user table ---------------------*/
 table.user-info {
-    width: 500px;
+    width: auto;
     margin: 0 auto;
     border-collapse: separate;
     border-spacing: 0px 15px;
@@ -366,6 +373,11 @@ table.user-info th:after {
     border-width: 10px;
     margin-top: -10px;
 }
+
+.user-btn {
+  margin : 5px auto;
+}
+
 /* firefox */
 @-moz-document url-prefix() {
     table.user-info th::after {
@@ -386,13 +398,27 @@ table.user-info th:after {
  
 table.user-info td {
     background: #f8f8f8;
-    width: 340px;
+    width: 300px;
     padding-left: 20px;
     text-align: center;
 }
+
+@media (max-width: 550px){
+  .user-detail {
+    width : auto;
+  }
+  
+  table.user-info th{
+    width : auto;
+  }
+  
+  table.user-info td{
+    width : 200px;
+  }
+}
+
 /*--------- footer -----------*/
 footer {
-  margin-top : 50px;
   background-color : #42406E;
   position: absolute;
   bottom: 0;
@@ -401,6 +427,7 @@ footer {
 }
 
 footer .container {
+  margin-top : 50px;
   width: auto;
   max-width: 680px;
   padding: 0 15px;

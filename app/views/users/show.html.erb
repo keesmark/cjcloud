@@ -1,25 +1,27 @@
-<div class="row">
-  <div class="col-xs-6-offset-4">
-    <table class="user-info">
-    <tbody>
-        <tr>
-            <th class="arrow_box">ユーザー名</div></th>
-            <td><%= @user.name %></td>
-        </tr>
-        <tr>
-            <th class="arrow_box">メールアドレス</th>
-            <td>
-              <%= @user.email %>
-            </td>
-        </tr>
-        <tr>
-            <th>設定</th>
-            <td>
-              <li><%= link_to "ユーザー情報の変更", edit_user_path(current_user), class: 'btn btn-info' %> <%= link_to 'アカウントを削除する', @user, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-danger" %></li>
-            </td>
-        </tr>
-    </tbody>
-</table>
-   
+<% breadcrumb :user, @user %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6-offset-4 user-detail">
+      <table class="user-info">
+        <tbody>
+            <tr>
+                <th class="arrow_box">ユーザー名</div></th>
+                <td><%= @user.name %></td>
+            </tr>
+            <tr>
+                <th class="arrow_box">メールアドレス</th>
+                <td>
+                  <%= @user.email %>
+                </td>
+            </tr>
+            <tr>
+                <th>設定</th>
+                <td>
+                  <li><%= link_to "ユーザー情報の変更", edit_user_path(current_user), class: 'btn btn-info user-btn' %> <%= link_to 'アカウントを削除する', @user, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-danger user-btn" %></li>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
