@@ -17,7 +17,7 @@
           <li><%= link_to "モントリオール", area_path(id: 4) %></li>
         </ul>
       </div>
-      <span class="link-none">
+      <div class="link-none">
       <% @c_boards.each do |c_board| %>
         <%= link_to c_board do %>
           <div class="p-list">
@@ -37,7 +37,7 @@
           </div>
         <% end %>
       <% end %>
-      </span>
+      </div>
     </div>
   </div>
 </div>
