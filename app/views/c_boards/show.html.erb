@@ -98,10 +98,9 @@
 </div>
 
   <div class="text-center edit-del">
-   
+    <% if current_user == @c_board.user %>
       <%= link_to 'このメッセージを編集する', edit_c_board_path(@c_board), class: "btn btn-primary" %>
   
       <%= link_to 'このメッセージを削除する', @c_board, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-danger" %>
+    <% end %>
   </div>
-  
-</div>
