@@ -41,6 +41,7 @@ class CBoardsController < ApplicationController
   end
 
   def destroy
+    @c_board = CBoard.find(params[:id])
     @c_board.destroy
 
     flash[:success] = '投稿は正常に削除されました'
@@ -56,7 +57,8 @@ class CBoardsController < ApplicationController
   def correct_user
     @c_board = current_user.c_boards.find_by(id: params[:id])
     unless @c_board
-      redirect_to root_url
+      redirect_to root_url unless current_user.admin_flag?
+      # redirect_to root_url
     end
   end
   
