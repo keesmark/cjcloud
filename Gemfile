@@ -66,3 +66,4 @@ group :production do
 end
 
 gem 'gretel'
+gem 'google-analytics-rails'

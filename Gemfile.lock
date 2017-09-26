@@ -81,6 +81,7 @@ GEM
     formatador (0.2.5)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    google-analytics-rails (1.1.1)
     gretel (3.0.9)
       rails (>= 3.1.0)
     i18n (0.8.6)
@@ -207,6 +208,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   dotenv-rails
   fog-aws
+  google-analytics-rails
   gretel
   jbuilder (~> 2.5)
   jquery-rails
