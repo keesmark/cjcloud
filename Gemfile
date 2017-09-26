@@ -67,3 +67,4 @@ end
 
 gem 'gretel'
 gem 'google-analytics-rails'
+gem 'sitemap_generator'
