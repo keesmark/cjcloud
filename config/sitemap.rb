@@ -1,5 +1,15 @@
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "https://cj-cloud.com"
+SitemapGenerator::Sitemap.sitemaps_host = 'https://cjimage.s3.amazonaws.com'
+SitemapGenerator::Sitemap.public_path = 'public/'
+SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new({
+  fog_provider: 'AWS',
+  fog_directory: ENV['AWS_S3_BUCKET'],
+  fog_region: ENV['AWS_REGION'],
+  aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+  aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+})
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
