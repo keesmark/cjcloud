@@ -96,6 +96,7 @@ Rails.application.configure do
     :password => ENV['SERVER_PASSWORD'],
     :authentication => :plain,
     :enable_starttls_auto => true,
-    :tls => true
+    :tls => true,
+    :ssl => true
   }
 end
