@@ -32,7 +32,7 @@
                 <div class="li-area label label-success sp-only"><%= c_board.area.name.truncate(10, separator:':') %></div><div class="li-area label label-success sp-none"><%= c_board.area.name %></div>
                 <div class="li-category label label-info sp-only"><%= c_board.category.name.truncate(10, separator:':') %></div><div class="li-category label label-info sp-none"><%= c_board.category.name %></div>
                 <div class="li-updated label label-default"><%= c_board.updated_at %></div>
-                <div class="sp-only"><%= c_board.title.truncate(25, omission: '...') %></div>
+                <div class="sp-only sp-li-title"><%= c_board.title.truncate(25, omission: '...') %></div>
               </div>
               <h2 class="li-title"><span class="sp-none"><%= c_board.title.truncate(25, omission: '...') %></span></h2>
               <p class="li-details"><span class="sp-none"><%= c_board.content.truncate(200, omission: '...') %></span><span class="sp-only"><%= c_board.content.truncate(100, omission: '...') %></p>
