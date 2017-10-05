@@ -53,7 +53,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'cj-cloud.com.herokudns.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address => ENV['SERVER_ADDRESS'],
@@ -62,6 +62,8 @@ Rails.application.configure do
     :user_name => ENV['SERVER_USER_NAME'],
     :password => ENV['SERVER_PASSWORD'],
     :authentication => :plain,
-    :enable_starttls_auto => true
+    :enable_starttls_auto => true,
+    :tls => true,
+    :ssl => true
   }
 end
