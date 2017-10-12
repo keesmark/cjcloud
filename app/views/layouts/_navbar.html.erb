@@ -27,8 +27,9 @@
      <div class="navbar-collapse collapse">
        <ul class="nav navbar-nav">
        <li class="nav-icon"><a href="/"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+       <li class="nav-icon"><%= link_to '<i class="glyphicon glyphicon-pencil"></i> 掲示板'.html_safe, boards_path %></li>
        <li class="nav-icon"><%= link_to '<i class="glyphicon glyphicon-th-list"></i> クラシファイド'.html_safe, c_boards_path %></li>
-       <li class="nav-icon"><a href="https://afficana.com"><i class="glyphicon glyphicon-pencil"></i> BLOG</a></li>
+       <li class="nav-icon"><a href="https://afficana.com"><i class="glyphicon glyphicon-book"></i> BLOG</a></li>
        <li class="nav-icon"><%= link_to '<i class="glyphicon glyphicon-envelope"></i> Contact'.html_safe, inquiry_path %></li>
        <% if logged_in? %>
               <li class="dropdown">

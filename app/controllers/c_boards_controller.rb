@@ -17,10 +17,10 @@ class CBoardsController < ApplicationController
   def create
     @c_board = current_user.c_boards.build(c_board_params)
     if @c_board.save
-      flash[:success] = '正常に投稿されました'
+      flash[:success] = '正常にコメントされました'
       redirect_to c_boards_url
     else
-      flash.now[:danger] = '投稿されませんでした'
+      flash.now[:danger] = 'コメントされませんでした'
       render :new
     end
     
@@ -58,7 +58,6 @@ class CBoardsController < ApplicationController
     @c_board = current_user.c_boards.find_by(id: params[:id])
     unless @c_board
       redirect_to root_url unless current_user.admin_flag?
-      # redirect_to root_url
     end
   end
   

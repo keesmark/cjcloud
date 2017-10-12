@@ -10,12 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909065555) do
+ActiveRecord::Schema.define(version: 20171007055645) do
 
   create_table "areas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "b_areas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "b_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "b_area_id"
+    t.integer  "b_category_id"
+    t.string   "title"
+    t.text     "content",       limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["b_area_id"], name: "index_boards_on_b_area_id", using: :btree
+    t.index ["b_category_id"], name: "index_boards_on_b_category_id", using: :btree
+    t.index ["user_id"], name: "index_boards_on_user_id", using: :btree
   end
 
   create_table "c_boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -42,6 +69,16 @@ ActiveRecord::Schema.define(version: 20170909065555) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "board_id"
+    t.integer  "user_id"
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["board_id"], name: "index_comments_on_board_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "email"
@@ -51,7 +88,12 @@ ActiveRecord::Schema.define(version: 20170909065555) do
     t.boolean  "admin_flag",      default: false
   end
 
+  add_foreign_key "boards", "b_areas"
+  add_foreign_key "boards", "b_categories"
+  add_foreign_key "boards", "users"
   add_foreign_key "c_boards", "areas"
   add_foreign_key "c_boards", "categories"
   add_foreign_key "c_boards", "users"
+  add_foreign_key "comments", "boards"
+  add_foreign_key "comments", "users"
 end

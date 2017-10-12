@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :c_boards, dependent: :destroy
+  has_many :boards, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end

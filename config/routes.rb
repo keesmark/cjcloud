@@ -29,5 +29,13 @@ Rails.application.routes.draw do
     resources :categories, only: [:show]
   end
   
+  resources :boards do 
+    resources :comments, only: [:create, :destroy]
+  end
+  
+  resources :b_areas, only: [:show] do
+    resources :b_categories, only: [:show]
+  end
+  
   get 'sitemap.xml.gz', to: redirect('https://cjimage.s3.amazonaws.com/sitemaps/sitemap.xml.gz')
 end

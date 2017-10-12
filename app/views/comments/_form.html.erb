@@ -1,0 +1,11 @@
+
+<%= form_for([@board, @board.comments.build]) do |f| %>
+  <p>
+    <%= f.label :comment %><br>
+    <%= f.text_area :content, rows: 5 %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

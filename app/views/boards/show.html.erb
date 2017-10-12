@@ -1,0 +1,75 @@
+
+
+<h2 class="h-title">カナダ掲示板の詳細</h2>  
+<div class="text-right">
+  <%= link_to '一覧に戻る', boards_path, class: "btn btn-info" %>
+</div>
+
+<div class="jumbotron back-jumbo">
+  <h2 class="text-left title well">
+  <%= @board.title %>
+  </h2>
+  <div class=" small labelsmall text-right"> 
+  更新日：<%= @board.updated_at %> <span class="label label-success"><%= @board.b_area.name %></span> <spam class="label label-info"><%= @board.b_category.name %></span>  
+  </div>
+  <div class="labelinfo text-right">
+    投稿者名：<%= @board.user.name %> 
+  </div>
+  
+  <div class="details">
+    <h3>内容</h3>
+    <p class="content-show"><%= @board.content %></p>
+  </div>
+  <div class="ad-post text-center">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- cj-post -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:250px"
+         data-ad-client="ca-pub-5902955087719107"
+         data-ad-slot="4514458456"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <span class="sp-none">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- cj-post -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:300px;height:250px"
+             data-ad-client="ca-pub-5902955087719107"
+             data-ad-slot="4514458456"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </span>
+  </div>
+  <div class="text-center edit-del">
+    <% if current_user == @board.user %>
+      <%= link_to 'このメッセージを編集する', edit_board_path(@board), class: "btn btn-primary" %>
+      <%= link_to 'このメッセージを削除する', @board, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-danger" %>
+    <% end %>
+  </div>
+</div>
+<div class="jumbotron back-jumbo">
+  <h2>書き込む</h2>
+  <%= render "comments/form" %>
+</div>
+
+  <h2>コメント一覧</h2>
+  <div class="comment">
+    <ul>
+      <% @comments.each do |comment| %>
+      <div class="comment-li">
+        <li class="comment-user">ユーザー名:
+          <%= comment.user.name %> <%= comment.created_at %>
+        </li>
+        <li class="comment-content">内容:<br>
+        <%= comment.content %></li>
+        <div class="del-comment">
+          <% if current_user == comment.user %>
+            <%= link_to '削除', board_comment_path(@board, comment), method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-danger" %>
+          <% end %>
+          </div>
+      </div>
+      <% end %>
+    </ul>
+  </div>

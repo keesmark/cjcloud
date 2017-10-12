@@ -1,0 +1,53 @@
+<h2 class="text-center">カナダ掲示板</h2>
+
+
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-12">
+      <section class="text-left">
+        <%= link_to '新規投稿', new_board_path, class: "btn btn-success btn-lg new-post" %>
+      </section>
+      
+      <div class="dropdown btn-area">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          エリア
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><%= link_to "all", b_area_path(id: 1) %></li>
+          <li><%= link_to "バンクーバー", b_area_path(id: 2) %></li>
+          <li><%= link_to "カルガリー", b_area_path(id: 3) %></li>
+          <li><%= link_to "トロント", b_area_path(id: 4) %></li>
+          <li><%= link_to "モントリオール", b_area_path(id: 5) %></li>
+        </ul>
+        
+      </div>
+      
+      <span class="link-none">
+      <% @boards.each do |board| %>
+        <%= link_to board do %>
+          <div class="b-list">
+            <section class="b-content">
+              <div class="b-top-list">
+                <ul>
+                  <li class="b-li-area label label-success sp-only"><%= board.b_area.name.truncate(10, separator:':') %></li><li><span class="b-li-area label label-success sp-none"><%= board.b_area.name %></span></li>
+                  <li class="b-li-category label label-info sp-only"><%= board.b_category.name.truncate(10, separator:':') %></li><li><span class="b-li-category label label-info sp-none"><%= board.b_category.name %></span></li>
+                  <li class="b-li-updated label label-default"><%= board.updated_at %></li>
+                </ul>
+              </div>
+              <div class="b-btm-li">
+                <h2 class="b-li-title"><span class="sp-none"><%= board.title.truncate(25, omission: '...') %></span><div class="sp-only"><%= board.title.truncate(25, omission: '...') %></div></h2>
+              </div>
+            </section>
+          </div>
+        <% end %>
+      <% end %>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <%= paginate @boards %>
+</div>
+          
