@@ -70,6 +70,7 @@ class BoardsController < ApplicationController
       :b_category_id,
       :b_area_id,
       :user,
+      :user_id,
       :agreement,
       :comment
       )
