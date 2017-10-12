@@ -23,6 +23,27 @@ crumb :detail do
   parent :c_boards
 end
 
+crumb :boards do
+  link "掲示板", boards_path
+  parent :root
+end
+
+crumb :b_area do |b_area|
+  link b_area.name, b_area
+  parent :boards
+end
+
+crumb :b_area_b_category do |b_area, b_category|
+  # link area.name, area
+  link b_category.name, b_area_b_category_path(b_area, id: b_category.id)
+  parent :b_area, b_area
+end
+
+crumb :b_detail do 
+  link "詳細", board_path
+  parent :boards
+end
+
 crumb :user do |user|
   link user.id, user
 end

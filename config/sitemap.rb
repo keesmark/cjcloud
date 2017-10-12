@@ -29,6 +29,8 @@ SitemapGenerator::Sitemap.create do
      
      add c_boards_path, :priority => 1.0, :changefreq => 'daily'
      
+     add boards_path, :priority => 1.0, :changefreq => 'daily'
+     
      add policy_path, :priority => 0, :changefreq => 'never'
      
      add signup_path, :priority => 0.2, :changefreq => 'monthly'

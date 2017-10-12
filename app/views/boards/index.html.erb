@@ -1,3 +1,4 @@
+<% breadcrumb :boards %>
 <h2 class="text-center">カナダ掲示板</h2>
 
 
@@ -24,7 +25,7 @@
         
       </div>
       
-      <span class="link-none">
+      <div class="link-none">
       <% @boards.each do |board| %>
         <%= link_to board do %>
           <div class="b-list">
@@ -43,7 +44,7 @@
           </div>
         <% end %>
       <% end %>
-      </span>
+      </div>
     </div>
   </div>
 </div>
