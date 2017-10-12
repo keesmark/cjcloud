@@ -54,8 +54,9 @@ class UsersController < ApplicationController
   
   def admin
     @users = User.all
-  
     @c_boards = CBoard.all
+    @boards = Board.all
+    @comments = Comment.all
     
   end
   
